@@ -3,4 +3,11 @@
     <string name="app_name">AndroidLabs</string>
     <string name="hello_message">Bonjour!</string>
     <string name="ButtonText">I\'m a french button</string>
+    <string name="ImgBtnDesc">Le Star</string>
+    <string name="checkBoxText">Box le check</string>
+    <string name="login">Not a word</string>
+    <string name="password">hapassword</string>
+    <string name="radioButton">le round button</string>
+    <string name="switchText">turn off</string>
+    <string name="title_activity_login">Oh I see!</string>
 </resources>
