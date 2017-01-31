@@ -9,4 +9,10 @@
     <string name="checkBoxText">Check Box</string>
     <string name="switchText">Switch</string>
     <string name="ImgBtnDesc">It\'s a star!</string>
+    <string name="switchon">Switch is On</string>
+    <string name="switchoff">Switch is Off</string>
+    <string name="dialog_message">Would you like to finish the activity?</string>
+    <string name="dialog_title">This is an Alert!</string>
+    <string name="ok">Yes</string>
+    <string name="cancel">No</string>
 </resources>

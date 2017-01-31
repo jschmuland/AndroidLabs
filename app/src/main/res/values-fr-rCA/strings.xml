@@ -10,4 +10,10 @@
     <string name="radioButton">le round button</string>
     <string name="switchText">turn off</string>
     <string name="title_activity_login">Oh I see!</string>
+    <string name="cancel">la no</string>
+    <string name="dialog_message">je finne</string>
+    <string name="dialog_title">Da ALERT!</string>
+    <string name="ok">we</string>
+    <string name="switchoff">no more switch(in french)</string>
+    <string name="switchon">its on again(in fr)</string>
 </resources>
