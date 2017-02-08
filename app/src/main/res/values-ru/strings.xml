@@ -16,4 +16,7 @@
     <string name="switchoff">things</string>
     <string name="switchon">to</string>
     <string name="title_activity_login">put</string>
+    <string name="chatEditText">ruskie pa ruskie</string>
+    <string name="chatbtntxt">Russian Chat</string>
+    <string name="sendbtn">Go Go Go</string>
 </resources>

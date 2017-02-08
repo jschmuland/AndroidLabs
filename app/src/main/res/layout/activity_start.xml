@@ -20,7 +20,18 @@
         android:text="@string/ButtonText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:id="@+id/button"
         android:layout_below="@+id/textView"
-        android:layout_alignParentStart="true"
-        android:id="@+id/button" />
+        android:layout_alignParentStart="true" />
+
+    <Button
+        android:text="@string/chatbtntxt"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/chatbtn"
+        android:layout_alignBaseline="@+id/button"
+        android:layout_alignBottom="@+id/button"
+        android:layout_toEndOf="@+id/button"
+        android:layout_marginStart="46dp" />
+
 </RelativeLayout>

@@ -16,4 +16,7 @@
     <string name="ok">we</string>
     <string name="switchoff">no more switch(in french)</string>
     <string name="switchon">its on again(in fr)</string>
+    <string name="chatEditText">Type le message</string>
+    <string name="chatbtntxt">french chat</string>
+    <string name="sendbtn">fire le message</string>
 </resources>

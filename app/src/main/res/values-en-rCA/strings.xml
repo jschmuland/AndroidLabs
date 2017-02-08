@@ -14,6 +14,9 @@
     <string name="dialog_message">You wanna be done?</string>
     <string name="dialog_title">Boom! In yo Face!</string>
     <string name="ok">Ya man!</string>
-    <string name="switchoff">You turned it off!</string>
+    <string name="switchoff">You turned it on!</string>
     <string name="switchon">You did it! its off!</string>
+    <string name="chatbtntxt">Start Chat</string>
+    <string name="sendbtn">Send</string>
+    <string name="chatEditText">Write a message</string>
 </resources>
