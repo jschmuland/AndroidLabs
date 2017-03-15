@@ -31,15 +31,23 @@ public class StartActivity extends AppCompatActivity {
 
         Button chatbtn = (Button) findViewById(R.id.chatbtn);
         chatbtn.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Log.i("StartActivity", "User clicked Start Chat");
+                    Intent intent = new Intent(StartActivity.this, ChatWindow.class);
+                    startActivity(intent);
+                }
+        });
+
+        Button wetherbtn = (Button) findViewById(R.id.weatherBtn);
+        wetherbtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Log.i(ACTIVITY_SERVICE, "User clicked Start Chat");
-                Intent intent = new Intent(StartActivity.this, ChatWindow.class);
+                Log.i("StartActivity","User cliked Weather Button");
+                Intent intent = new Intent(StartActivity.this, WeatherForecast.class);
                 startActivity(intent);
             }
-        }
-
-        );
+        });
     }
 
     @Override
