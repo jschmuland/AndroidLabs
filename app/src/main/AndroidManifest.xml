@@ -5,8 +5,10 @@
     <uses-feature
         android:name="android.hardware.camera"
         android:required="true" />
-    <uses-permission android:name="android.permission.INTERNET"
-        android:required="true"/>
+
+    <uses-permission
+        android:name="android.permission.INTERNET"
+        android:required="true" />
 
     <application
         android:allowBackup="true"
@@ -38,7 +40,9 @@
         <activity
             android:name=".WeatherForecast"
             android:label="@string/title_activity_weather_forecast"
-            android:theme="@style/AppTheme.NoActionBar"></activity>
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity android:name=".MessageDetails"/>
+
     </application>
 
 </manifest>

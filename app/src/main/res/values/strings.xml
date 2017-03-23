@@ -20,5 +20,6 @@
     <string name="chatEditText">Write a message</string>
     <string name="title_activity_weather_forecast">WeatherForecast</string>
     <string name="weatherbtn">Weather</string>
+    <string name="deleteMessageButton">Delete This Message</string>
 
 </resources>
