@@ -2,4 +2,23 @@
     <string name="app_name">AndroidLabs</string>
     <string name="hello_message">Hello World</string>
     <string name="ButtonText">I\'m a button</string>
+    <string name="title_activity_login">LoginActivity</string>
+    <string name="login">Login</string>
+    <string name="password">Password</string>
+    <string name="radioButton">Radio Button</string>
+    <string name="checkBoxText">Check Box</string>
+    <string name="switchText">Switch</string>
+    <string name="ImgBtnDesc">It\'s a star!</string>
+    <string name="switchon">Switch is On</string>
+    <string name="switchoff">Switch is Off</string>
+    <string name="dialog_message">Would you like to finish the activity?</string>
+    <string name="dialog_title">This is an Alert!</string>
+    <string name="ok">Yes</string>
+    <string name="cancel">No</string>
+    <string name="chatbtntxt">Start Chat</string>
+    <string name="sendbtn">Send</string>
+    <string name="chatEditText">Write a message</string>
+    <string name="title_activity_weather_forecast">WeatherForecast</string>
+    <string name="weatherbtn">Weather</string>
+
 </resources>

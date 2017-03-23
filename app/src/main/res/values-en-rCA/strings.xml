@@ -3,4 +3,20 @@
     <string name="app_name">AndroidLabs</string>
     <string name="hello_message">Hello World!</string>
     <string name="ButtonText">\"I\'m a button eh?\"</string>
+    <string name="ImgBtnDesc">Your a Star</string>
+    <string name="checkBoxText">Check Box</string>
+    <string name="login">Sign In</string>
+    <string name="password">dont show</string>
+    <string name="radioButton">circle button</string>
+    <string name="switchText">turn on</string>
+    <string name="title_activity_login">what is this for?</string>
+    <string name="cancel">No way man!</string>
+    <string name="dialog_message">You wanna be done?</string>
+    <string name="dialog_title">Boom! In yo Face!</string>
+    <string name="ok">Ya man!</string>
+    <string name="switchoff">You turned it on!</string>
+    <string name="switchon">You did it! its off!</string>
+    <string name="chatbtntxt">Start Chat</string>
+    <string name="sendbtn">Send</string>
+    <string name="chatEditText">Write a message</string>
 </resources>

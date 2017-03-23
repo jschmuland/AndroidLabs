@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">AndroidLabs</string>
+    <string name="ButtonText">I\'m a Russian button</string>
+    <string name="ImgBtnDesc">Da Star</string>
+    <string name="cancel">Het</string>
+    <string name="checkBoxText">da box is for checking</string>
+    <string name="dialog_message">yaul stall</string>
+    <string name="ok">Da</string>
+    <string name="dialog_title">Alert Russia!</string>
+    <string name="hello_message">Previet</string>
+    <string name="login">runn</string>
+    <string name="password">ing</string>
+    <string name="radioButton">out</string>
+    <string name="switchText">"of "</string>
+    <string name="switchoff">things</string>
+    <string name="switchon">to</string>
+    <string name="title_activity_login">put</string>
+    <string name="chatEditText">ruskie pa ruskie</string>
+    <string name="chatbtntxt">Russian Chat</string>
+    <string name="sendbtn">Go Go Go</string>
+</resources>
