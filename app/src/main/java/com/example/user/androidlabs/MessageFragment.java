@@ -21,10 +21,10 @@ import android.widget.TextView;
  */
 
 public class MessageFragment extends Fragment {
-    private final static String TAG= "MessageFragment";
+    private final static String TAG = "MessageFragment";
     long id;
     String message;
-    Button deleteBtn;
+    protected Button deleteBtn;
     Context parent;
 //    protected ChatDatabaseHelper dbHelper;
 
@@ -32,31 +32,27 @@ public class MessageFragment extends Fragment {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-    Bundle bun = getArguments();
-
+        Bundle bun = getArguments();
         id = bun.getLong("ID");
         message = bun.getString("MESSAGE");
-        Log.i(TAG, "onCreate: "+bun+id+message);
     }
 
     @Override
-    public void onAttach(Context context){
+    public void onAttach(Context context) {
         super.onAttach(context);
-        Log.i(TAG, "onAttach: ");
         parent = context;
     }
 
     @Override
-    public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, Bundle savedInstanceState) {
+    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         super.onCreateView(inflater, container, savedInstanceState);
-        Log.i(TAG, "onCreateView: ");
         View gui = inflater.inflate(R.layout.content_message_details, null);
 
         TextView msgText = (TextView) gui.findViewById(R.id.fragment_message);
         msgText.setText(message);
 
-        TextView idText = (TextView)gui.findViewById(R.id.idNumber);
-        idText.setText("Message ID = "+id);
+        TextView idText = (TextView) gui.findViewById(R.id.idNumber);
+        idText.setText("Message ID = " + id);
 
 
         deleteBtn = (Button) gui.findViewById(R.id.deleteMsgBtn);
@@ -64,22 +60,22 @@ public class MessageFragment extends Fragment {
                 new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
-                        Log.i(TAG, "onClick: Delete button"+id);
-                        Intent data = new Intent();
-                        data.putExtra("ID",id);
 
+                        if(getActivity().getClass() == ChatWindow.class){
+                            ((ChatWindow)getActivity()).deleteAndStart(id);
+                            getFragmentManager().beginTransaction().remove(MessageFragment.this).commit();
+                        }else {
+                            Intent data = new Intent(getActivity(),ChatWindow.class);
+                            data.putExtra("ID", id);
 
-                        getActivity().setResult(Activity.RESULT_OK,data);
-//                        getActivity().onBackPressed();
-//                        getActivity().getFragmentManager().beginTransaction().detach(getParentFragment());
-//                        getActivity().onActivityReenter(15,data);
+                            getActivity().setResult(Activity.RESULT_OK, data);
+                            getActivity().finish();
+                        }
+
 
                     }
                 }
         );
-//        deleteBtn.setOnClickListener();
-//        TextView tv = (TextView)gui.findViewById(R.id.tv);
-//        tv.setText("You clicked on ID:" + id);
         return gui;
     }
 }

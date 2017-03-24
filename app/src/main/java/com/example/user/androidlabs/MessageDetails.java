@@ -1,5 +1,6 @@
 package com.example.user.androidlabs;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -17,6 +18,7 @@ public class MessageDetails extends AppCompatActivity {
         MessageFragment frag = new MessageFragment();
         Bundle bun = getIntent().getExtras();
         frag.setArguments(bun);
+        final long id = bun.getInt("ID");
         getFragmentManager().beginTransaction().add(R.id.activity_message_details, frag).commit();
 
     }

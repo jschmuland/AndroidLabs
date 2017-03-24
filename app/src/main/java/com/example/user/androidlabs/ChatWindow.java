@@ -6,6 +6,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
+import android.support.v4.app.FragmentManager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -27,6 +28,8 @@ public class ChatWindow extends AppCompatActivity {
     private boolean inTabletLayout;
     private static final String TAG = "ChatWindow";
     private SQLiteDatabase db;
+    private Cursor results;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -34,10 +37,8 @@ public class ChatWindow extends AppCompatActivity {
 
         if (findViewById(R.id.chatFrameLayout)==null){
             inTabletLayout = false;
-            Log.i(TAG, "onCreate: phone layout");
         }else{
             inTabletLayout = true;
-            Log.i(TAG, "onCreate: Tablet layout");
         }
 
 
@@ -51,15 +52,17 @@ public class ChatWindow extends AppCompatActivity {
         final EditText chatTextHndl = (EditText) findViewById(R.id.chatEditText);
 
 
-        final Cursor results = db.query(false, ChatDatabaseHelper.TABLE_NAME,
+         results = db.query(false, ChatDatabaseHelper.TABLE_NAME,
                 new String[]{ChatDatabaseHelper.ID_COLUMN, ChatDatabaseHelper.MESSAGE_COLUMN},
                 null,null,null,null,null,null);
+
         int rows = results.getCount();//number of rows
         results.moveToFirst();
 
-            Log.i("ChatDatabaseHelper", "onCreate: Cursor row count ="+results.getCount());
             while(!results.isAfterLast()){
                 chatText.add(results.getString(results.getColumnIndex(ChatDatabaseHelper.MESSAGE_COLUMN)));
+
+
                 Log.i("ChatDatabaseHelper","Row ID: "+results.getString(
                         results.getColumnIndex(ChatDatabaseHelper.ID_COLUMN)
                 )+" SQL MESSAGE: "+ results.getString(
@@ -69,9 +72,6 @@ public class ChatWindow extends AppCompatActivity {
 
 
             results.moveToFirst();
-            for (int i = 0;i<results.getColumnCount();i++){
-                Log.i(TAG,"SQL Column Rows: "+ results.getColumnName(i));
-            }
 
 
         //in this case, “this” is the ChatWindow, which is-A Context object
@@ -81,20 +81,17 @@ public class ChatWindow extends AppCompatActivity {
         //creating a on item listener for list view
         theList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
-            public void onItemClick(AdapterView<?> adapterView, View view, int i, long ll) {
-                final long l = ll+1;
-                Log.d(TAG, "onItemClick: " + i + " " + l);
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                final long l = id+1;
 
-                 Cursor result = db.query(false,ChatDatabaseHelper.TABLE_NAME,
-                         new String[]{ChatDatabaseHelper.ID_COLUMN,ChatDatabaseHelper.MESSAGE_COLUMN},
-                         ChatDatabaseHelper.ID_COLUMN+"=?",new String[]{String.valueOf(l)},
-                         null,null,null,null);
-                result.moveToFirst();
-                String message = result.getString(results.getColumnIndex(ChatDatabaseHelper.MESSAGE_COLUMN));
-                Log.i(TAG, "onItemClick: "+message);
-                Bundle bun = new Bundle();
-                bun.putLong("ID", l );//l is the database ID of selected item
+                long msgID = messageAdapter.getItemID(position);
+
+                String message = messageAdapter.getItem(position);
+
+                final Bundle bun = new Bundle();
+                bun.putLong("ID", msgID );//l is the database ID of selected item
                 bun.putString("MESSAGE", message);
+
 
 
                 //step 2, if a tablet, insert fragment into FrameLayout, pass data
@@ -103,14 +100,19 @@ public class ChatWindow extends AppCompatActivity {
 
                     frag.setArguments(bun);
 
-                    getFragmentManager().beginTransaction().replace(R.id.chatFrameLayout, frag).commit();
+
+                    getFragmentManager().beginTransaction()
+                                        .replace(R.id.chatFrameLayout, frag)
+                                        .addToBackStack("ID")
+                                        .commit();
+
 
                 }
                 //step 3 if a phone, transition to empty Activity that has FrameLayout
                 else //isPhone
                 {
                     Intent intnt = new Intent(ChatWindow.this, MessageDetails.class);
-                    intnt.putExtra("ID" , l); //pass the Database ID to next activity
+                    intnt.putExtra("ID" , msgID); //pass the Database ID to next activity
                     intnt.putExtra("MESSAGE",message);
                     startActivityForResult(intnt,10); //go to view fragment details
                 }
@@ -148,18 +150,20 @@ public class ChatWindow extends AppCompatActivity {
 
         if (requestCode == 10 && resultCode == RESULT_OK){
             long id = data.getLongExtra("ID",0);
-            Log.i(TAG, "onActivityResult: id = "+id);
-            db.delete(ChatDatabaseHelper.TABLE_NAME,ChatDatabaseHelper.ID_COLUMN+"=?",
-                    new String[]{String.valueOf(id)});
-
-            Intent refresh = new Intent(this, ChatWindow.class);
-            startActivity(refresh);
-            this.finish();
+            deleteAndStart(id);
         }
 
 
     }
 
+    public void deleteAndStart(long id){
+        db.delete(ChatDatabaseHelper.TABLE_NAME,ChatDatabaseHelper.ID_COLUMN+"=?",
+                new String[]{String.valueOf(id)});
+
+        Intent refresh = new Intent(this, ChatWindow.class);
+        startActivity(refresh);
+        this.finish();
+    }
 
     @Override
     public void onStart() {
@@ -190,7 +194,14 @@ public class ChatWindow extends AppCompatActivity {
             return chatText.size();
         }
 
-        public long getItemID(int position){return position;}
+        public long getItemID(int position){
+            results = db.query(false, ChatDatabaseHelper.TABLE_NAME,
+                    new String[]{ChatDatabaseHelper.ID_COLUMN, ChatDatabaseHelper.MESSAGE_COLUMN},
+                    null,null,null,null,null,null);
+            results.moveToPosition(position);
+
+            return results.getLong(results.getColumnIndex(ChatDatabaseHelper.ID_COLUMN));
+        }
 
         @Override
         public String getItem(int position){
@@ -212,5 +223,9 @@ public class ChatWindow extends AppCompatActivity {
 
             return result;
         }
+    }
+
+    public boolean getInTabletLayout(){
+        return inTabletLayout;
     }
 }
