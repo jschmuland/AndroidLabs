@@ -61,12 +61,6 @@ public class ChatWindow extends AppCompatActivity {
 
             while(!results.isAfterLast()){
                 chatText.add(results.getString(results.getColumnIndex(ChatDatabaseHelper.MESSAGE_COLUMN)));
-
-
-                Log.i("ChatDatabaseHelper","Row ID: "+results.getString(
-                        results.getColumnIndex(ChatDatabaseHelper.ID_COLUMN)
-                )+" SQL MESSAGE: "+ results.getString(
-                results.getColumnIndex(ChatDatabaseHelper.MESSAGE_COLUMN)));
                 results.moveToNext();
             }
 

@@ -36,5 +36,6 @@
         android:layout_alignParentTop="true"
         android:layout_alignParentEnd="true"
         android:id="@+id/chatListView"
-        android:layout_above="@+id/chatBtn" />
+        android:layout_above="@+id/chatBtn"
+        />
 </RelativeLayout>

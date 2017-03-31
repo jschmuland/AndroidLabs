@@ -41,8 +41,15 @@
             android:name=".WeatherForecast"
             android:label="@string/title_activity_weather_forecast"
             android:theme="@style/AppTheme.NoActionBar" />
-        <activity android:name=".MessageDetails"/>
-
+        <activity android:name=".MessageDetails" />
+        <activity
+            android:name=".TestToolbar"
+            android:label="@string/title_activity_test_toolbar"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".will_delete"
+            android:label="@string/title_activity_will_delete"
+            android:theme="@style/AppTheme.NoActionBar"></activity>
     </application>
 
 </manifest>

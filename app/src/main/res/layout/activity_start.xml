@@ -44,4 +44,13 @@
         android:layout_marginTop="16dp"
         android:layout_toStartOf="@+id/chatbtn" />
 
+    <Button
+        android:id="@+id/toolbarBtn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignEnd="@+id/chatbtn"
+        android:layout_alignStart="@+id/chatbtn"
+        android:layout_alignTop="@+id/weatherBtn"
+        android:text="@string/toolbarBtnName" />
+
 </RelativeLayout>

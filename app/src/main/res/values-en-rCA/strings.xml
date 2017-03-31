@@ -19,4 +19,5 @@
     <string name="chatbtntxt">Start Chat</string>
     <string name="sendbtn">Send</string>
     <string name="chatEditText">Write a message</string>
+    <string name="toolbarBtnName">Test Toolbar</string>
 </resources>
